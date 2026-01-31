@@ -1,0 +1,41 @@
+# Local LLM Configuration
+# All environment variables are loaded from .env file
+# Use ${ENV_NAME} syntax to reference environment variables
+
+# Project Settings
+project:
+  name: "local-llm"
+  version: "1.0.0"
+  description: "Local LLM inference server"
+
+# Server Configuration
+server:
+  host: "0.0.0.0"
+  port: ${SERVER_PORT:8000}
+  debug: ${DEBUG:false}
+  cors_origins:
+    - "*"
+
+# Llama.cpp Backend Configuration
+backend:
+  type: "llama.cpp"
+  base_url: "http://localhost:${LLAMA_PORT:11434}/v1"
+  model: "${LLAMA_MODEL:Qwen3-4B-Instruct-2507-GGUF}"
+  context_length: ${LLAMA_CONTEXT_LENGTH:4096}
+  temperature: ${LLAMA_TEMPERATURE:0.7}
+  max_tokens: ${LLAMA_MAX_TOKENS:1024}
+  gpu_layers: ${LLAMA_GPU_LAYERS:-1}
+  threads: ${LLAMA_THREADS:4}
+
+# Logging Configuration
+logging:
+  level: "${LOG_LEVEL:INFO}"
+  format: "json"
+  file: "logs/app.log"
+
+# Feature Flags
+features:
+  streaming: true
+  function_calling: false
+  system_prompt: true
+  chat_template: true

@@ -1,0 +1,33 @@
+services:
+
+  llama_cpp:
+    image: ghcr.io/ggml-org/llama.cpp:server
+    command:
+      - --host
+      - 0.0.0.0
+      - --port
+      - "11434"
+      - --hf-repo
+      # qwen3-4b: unsloth/Qwen3-4B-Instruct-2507-GGUF
+      - "${LLAMA_HF_REPO:-LiquidAI/LFM2.5-1.2B-Instruct-GGUF}"
+      - --alias
+      # qwen3-4b: qwen3-4b
+      - "${LLAMA_MODEL_ALIAS:-lfm2.5-1.2b}"
+      - --ctx-size
+      - "${LLAMA_CTX_SIZE:-4096}"
+      - --parallel
+      - "4"
+      - --batch-size
+      - "512"
+    ports:
+      - "${LLAMA_HOST_PORT:-11436}:11434"
+    volumes:
+      - ./llama/models:/models
+    environment:
+      - XDG_CACHE_HOME=/models
+      - HF_HOME=/models
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://localhost:11434/v1/models > /dev/null"]
+      interval: 10s
+      timeout: 5s
+      retries: 30

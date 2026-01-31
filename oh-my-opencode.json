@@ -1,0 +1,78 @@
+{
+  "share": "disabled",
+  "autoupdate": false,
+  "disabled_providers": ["opencode"],
+  "agents": {
+    "Sisyphus": {
+      "model": "minimax/MiniMax-M2.1",
+      "permission": {
+        "edit": "ask",
+        "write": "ask",
+        "bash": "ask",
+        "webfetch": "ask"
+      }
+    },
+    "Prometheus": {
+      "model": "minimax/MiniMax-M2.1",
+      "permission": {
+        "edit": "deny",
+        "write": "deny",
+        "bash": "deny",
+        "webfetch": "ask"
+      }
+    },
+    "Atlas": {
+      "model": "minimax/MiniMax-M2.1",
+      "permission": {
+        "edit": "ask",
+        "write": "ask",
+        "bash": "ask",
+        "webfetch": "ask"
+      }
+    },
+    "oracle": {
+      "model": "minimax/MiniMax-M2.1",
+      "permission": {
+        "edit": "deny",
+        "write": "deny",
+        "bash": "deny",
+        "webfetch": "ask"
+      }
+    }
+  },
+  "categories": {
+    "visual-engineering": {
+      "model": "minimax/MiniMax-M2.1",
+      "permission": {
+        "edit": "ask",
+        "write": "ask",
+        "bash": "ask",
+        "webfetch": "ask"
+      }
+    },
+    "ultrabrain": {
+      "permission": {
+        "edit": "ask",
+        "write": "ask",
+        "bash": "ask",
+        "webfetch": "ask"
+      }
+    },
+    "deep": {
+      "permission": {
+        "edit": "ask",
+        "write": "ask",
+        "bash": "ask",
+        "webfetch": "ask"
+      }
+    },
+    "quick": {
+      "permission": {
+        "edit": "ask",
+        "write": "ask",
+        "bash": "ask",
+        "webfetch": "ask"
+      }
+    }
+  }
+}
