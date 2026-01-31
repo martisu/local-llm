@@ -4,3 +4,16 @@ services:
     build:
       context: ./llama
     image: local-voice-ai-llama-server:arm64
+    volumes:
+      - ./llama/models:/models
+    command:
+      - --host
+      - 0.0.0.0
+      - --port
+      - "11434"
+      - --model
+      - /models/LiquidAI_LFM2.5-1.2B-Instruct-GGUF_LFM2.5-1.2B-Instruct-Q4_K_M.gguf
+      - --ctx-size
+      - "4096"
+      - --parallel
+      - "4"
